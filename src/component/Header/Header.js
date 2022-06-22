@@ -23,9 +23,9 @@ function Header(props) {
                   <nav>
                     <ul>
                       <li className="has-dropdown">
-                        <a className="active main-menu-link" href="index.html">
+                        <NavLink className="active main-menu-link" to="/" exact>
                           Home <i className="fa fa-angle-down" />
-                        </a>
+                        </NavLink>
                         {/* Sub Menu */}
                         <ul className="sub-menu">
                           <li>
@@ -196,9 +196,9 @@ function Header(props) {
                         </div>
                       </li>
                       <li className="has-dropdown">
-                        <a href="blog-single-sidebar-left.html">
+                        <NavLink to='/Blog' exact>
                           Blog <i className="fa fa-angle-down" />
-                        </a>
+                        </NavLink>
                         {/* Sub Menu */}
                         <ul className="sub-menu">
                           <li>
@@ -237,9 +237,9 @@ function Header(props) {
                         </ul>
                       </li>
                       <li className="has-dropdown">
-                        <a href="#">
+                        <NavLink to='/Pages'>
                           Pages <i className="fa fa-angle-down" />
-                        </a>
+                        </NavLink>
                         {/* Sub Menu */}
                         <ul className="sub-menu">
                           <li>
@@ -254,10 +254,10 @@ function Header(props) {
                         </ul>
                       </li>
                       <li>
-                        <a href="about-us.html">About Us</a>
+                        <NavLink to='/About' exact>About Us</NavLink>
                       </li>
                       <li>
-                        <a href="contact-us.html">Contact Us</a>
+                        <NavLink to='/Contact' exact>Contact Us</NavLink>
                       </li>
                     </ul>
                   </nav>
