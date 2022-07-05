@@ -1,5 +1,17 @@
 .App {
+  /* text-align: center; */
+}
+
+.products{
   text-align: center;
+}
+
+.mt-100{
+  margin: 80px 0px 60px 0px;
+}
+
+.Err{
+  color: red;
 }
 
 .App-logo {

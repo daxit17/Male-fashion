@@ -237,13 +237,13 @@ function Header(props) {
                         </ul>
                       </li>
                       <li className="has-dropdown">
-                        <NavLink to='/Pages'>
+                        <NavLink to='/Pages' exact>
                           Pages <i className="fa fa-angle-down" />
                         </NavLink>
                         {/* Sub Menu */}
                         <ul className="sub-menu">
                           <li>
-                            <a href="faq.html">Frequently Questions</a>
+                            <NavLink to='/weblayout' exact>Admin panel</NavLink>
                           </li>
                           <li>
                             <a href="privacy-policy.html">Privacy Policy</a>

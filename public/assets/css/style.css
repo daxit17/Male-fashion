@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.swiper-grid-column>.swiper-wrapper {
+    flex-wrap: wrap;
+    flex-direction: row !important;
+}
 
 .swiper {
     width: 100%;
@@ -30,12 +34,13 @@
     height: 100%;
     object-fit: cover;
   }
+
   
   .Error{
     color: red;
   }
 
------------------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------------
 
     CSS INDEX
     ===================
