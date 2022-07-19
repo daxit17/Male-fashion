@@ -1,291 +1,163 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import * as yup from 'yup';
-import { Form, Formik, useFormik } from 'formik';
-import { DataGrid } from '@mui/x-data-grid';
-import { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import React, { useState } from 'react';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 
-export default function Products() {
-    const [open, setOpen] = React.useState(false);
-    const [data, setData] = useState([]);
-    const [dopen, setdOpen] = React.useState(false);
-    const [did, setDid] = useState(0);
-    const [update, setUpdate] = useState(false);
+const orgData = [
+    {
+        id: 101,
+        name: "Table",
+        quantity: 5000,
+        price: "$" + " " + 2500,
+        warrenty: 1
+    },
+    {
+        id: 102,
+        name: "ALIQUAM LOBORTIS",
+        quantity: 1000,
+        price: "$" + " " + 3000,
+        warrenty: 2021
+    },
+    {
+        id: 103,
+        name: " CONDIMENTUM POSUERE",
+        quantity: 5000,
+        price: "$" + " " + 4000,
+        warrenty: 3
+    },
+    {
+        id: 104,
+        name: " DONEC EU LIBERO AC",
+        quantity: 200,
+        price: "$" + " " + 8000,
+        warrenty: 1
+    },
+    {
+        id: 105,
+        name: " EPICURI PER LOBORTIS",
+        quantity: 2500,
+        price: "$" + " " + 4500,
+        warrenty: 2
+    },
+    {
+        id: 106,
+        name: "Table",
+        quantity: 5000,
+        price: "$" + " " + 2500,
+        warrenty: 1
+    },
+    {
+        id: 107,
+        name: "ALIQUAM LOBORTIS",
+        quantity: 1000,
+        price: "$" + " " + 3000,
+        warrenty: 2021
+    },
+    {
+        id: 108,
+        name: " CONDIMENTUM POSUERE",
+        quantity: 5000,
+        price: "$" + " " + 4000,
+        warrenty: 3
+    },
+    {
+        id: 109,
+        name: " DONEC EU LIBERO AC",
+        quantity: 200,
+        price: "$" + " " + 8000,
+        warrenty: 1
+    },
+    {
+        id: 110,
+        name: " EPICURI PER LOBORTIS",
+        quantity: 2500,
+        price: "$" + " " +4500,
+        warrenty: 2
+    },
+]
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
 
-    const handleClose = () => {
-        setOpen(false);
-        formik.resetForm()
-        setUpdate(false)
-    };
 
-    const handleDClickOpen = () => {
-        setdOpen(true);
-    };
+function Product(props) {
+    const [pdata, setPdata] = useState(orgData)
 
-    const handleDClose = () => {
-        setdOpen(false);
-    };
-
-    // schema
-
-    let schema = yup.object().shape({
-        id: yup.number().required("Please Enter Product Id...").positive().integer(),
-        name: yup.string().required("Please Enter Product Name..."),
-        qantity: yup.number().required("Please Enter Product Quantity...").positive().integer(),
-        price: yup.number().required("Please Enter Product Price...").positive().integer(),
-    });
-
-    // formik
-
-    const formik = useFormik({
-        initialValues: {
-            id: '',
-            name: '',
-            qantity: '',
-            price: '',
-        },
-        validationSchema: schema,
-        onSubmit: (values, action) => {
-            if (update) {
-                updatedata(values);
-            } else {
-                handleInsert(values);
-            }
-            handleClose();
-        },
-    });
-
-    // handleInsert
-
-    const handleInsert = (values) => {
-        let localData = JSON.parse(localStorage.getItem("products"));
-
-        if (localData === null) {
-            localStorage.setItem("products", JSON.stringify([values]))
-        } else {
-            localData.push(values);
-            localStorage.setItem("products", JSON.stringify(localData));
-        }
-        LoadData();
-        handleClose();
-        formik.resetForm();
+    const Sdata = (val) => {
+        const searchdata = orgData.filter((l) => (
+            l.name.toLowerCase().includes(val.toLowerCase()) ||
+            l.quantity.toString().includes(val) ||
+            l.price.includes(val) ||
+            l.warrenty.toString().includes(val) ||
+            l.id.toString().includes(val)
+        ))
+        setPdata(searchdata);
     }
-
-    // Table columns
-
-    const columns = [
-        { field: 'id', headerName: 'ID', width: 250 },
-        { field: 'name', headerName: 'NAME', width: 250 },
-        { field: 'qantity', headerName: 'QUANTITY', width: 250 },
-        { field: 'price', headerName: 'PRICE', width: 250 },
-        {
-            field: 'action',
-            headerName: 'ACTION',
-            width: 250,
-            renderCell: (params) => (
-                <>
-                    <IconButton aria-label="edit" onClick={() => handleEdit(params)}>
-                        <EditIcon />
-                    </IconButton>
-                    <IconButton aria-label="delete" onClick={() => { handleDClickOpen(); setDid(params.id) }}>
-                        <DeleteIcon />
-                    </IconButton>
-                </>
-            )
-        },
-    ];
-
-    // Table rows
-
-    const LoadData = () => {
-        let localData = JSON.parse(localStorage.getItem("products"));
-
-        if (localData !== null) {
-            setData(localData);
-        }
-    }
-
-    // useState
-
-    useState(() => {
-        LoadData();
-    }, [])
-
-    // handleDelete
-
-    const handleDelete = (params) => {
-        let localData = JSON.parse(localStorage.getItem("products"));
-
-        let fData = localData.filter((l) => l.id !== did);
-
-        localStorage.setItem("products", JSON.stringify(fData));
-
-        handleDClose();
-        LoadData();
-    }
-
-    // handleEdit
-
-    const handleEdit = (params) => {
-        handleClickOpen();
-        setUpdate(true);
-        formik.setValues(params.row);
-    }
-
-    // localdata
-
-    const localdata = () => {
-        const datap = JSON.parse(localStorage.getItem("products"));
-        if (datap !== null) {
-            setData(datap);
-        }
-    }
-
-    // updatedata
-
-    const updatedata = (values) => {
-        const upddata = JSON.parse(localStorage.getItem("products"))
-
-        const newdata = upddata.map((m) => {
-            if (m.id === values.id) {
-                return values;
-            } else {
-                return m;
-            }
-        });
-
-        localStorage.setItem("products", JSON.stringify(newdata));
-
-        handleClose();
-        localdata();
-        setUpdate(false);
-    }
-
-    const { handleBlur, handleChange, handleSubmit, touched, errors, values } = formik;
 
     return (
-        <div className='products'>
+        <div>
 
-            <h1 className='mt-100'>Products Information</h1>
-
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Add Products
-            </Button>
-
-            <div style={{ height: 400, width: '100%' }} className='mt-100'>
-                <DataGrid
-                    rows={data}
-                    columns={columns}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
-                    checkboxSelection
-                />
+            <div class="breadcrumb-section breadcrumb-bg-color--golden">
+                <div class="breadcrumb-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3 class="breadcrumb-title">Products</h3>
+                                <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                                    <nav aria-label="breadcrumb">
+                                        <ul>
+                                            <li><a href="#">Home</a></li>
+                                            <li class="active" aria-current="page">Products</li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <Dialog
-                open={dopen}
-                onClose={handleDClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-                fullWidth
-            >
-                <DialogTitle id="alert-dialog-title">
-                    {"Are You Sure To Delete ?"}
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleDClose}>No</Button>
-                    <Button onClick={handleDelete} autoFocus>
-                        Yes
-                    </Button>
-                </DialogActions>
-            </Dialog>
+            <div className='container'>
 
-            <Dialog open={open} onClose={handleClose} fullWidth>
-                <DialogTitle>
+                <input className='ms-4 rounded-1 p-2'
+                    margin="dense"
+                    placeholder='Search'
+                    name="name"
+                    label="Search"
+                    type="text"
+                    fullWidth
+                    variant="standard"
+                    onChange={(e) => Sdata(e.target.value)}
+                />
+
+                <div className="row">
                     {
-                        (update) ?
-                            <p>Update Data</p>
-                            :
-                            <p>Add products</p>
+                        pdata.map((p, i) => {
+                            return (
+                                <Card key={i} className="col-3 m-4"
+                                >
+                                    <CardBody>
+                                        <CardTitle tag="h5" className='fw-bold fs-2' >
+                                            {p.name}
+                                        </CardTitle>
+                                        <CardSubtitle
+                                            className="mb-2 text-muted fs-4"
+                                            tag="h6"
+                                        >
+                                            {p.quantity}
+                                        </CardSubtitle>
+                                        <CardText className='fs-5'>
+                                            {p.warrenty}
+                                        </CardText>
+                                        <CardText className='fs-5'>
+                                            {p.price}
+                                        </CardText>
+                                    </CardBody>
+                                </Card>
+                            )
+                        })
                     }
-                </DialogTitle>
-                <Formik values={formik}>
-                    <Form onSubmit={handleSubmit}>
-                        <DialogContent>
-                            <TextField
-                                value={values.id}
-                                margin="dense"
-                                name="id"
-                                label="Enter Product Id"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                            />
-                            {errors.id && touched.id ? <p className='Err'> {errors.id} </p> : ''}
-                            <TextField
-                                value={values.name}
-                                margin="dense"
-                                name="name"
-                                label="Enter Product Name"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                            />
-                            {errors.name && touched.name ? <p className='Err'> {errors.name} </p> : ''}
-                            <TextField
-                                value={values.qantity}
-                                margin="dense"
-                                name="qantity"
-                                label="Enter Product Quantity"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                            />
-                            {errors.qantity && touched.qantity ? <p className='Err'> {errors.qantity} </p> : ''}
-                            <TextField
-                                value={values.price}
-                                margin="dense"
-                                name="price"
-                                label="Enter Product Price"
-                                type="text"
-                                fullWidth
-                                variant="standard"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                            />
-                            {errors.price && touched.price ? <p className='Err'> {errors.price} </p> : ''}
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleClose}>Cancel</Button>
-                            {
-                                (update) ?
-                                    <Button type='submit'>Update</Button>
-                                    :
-                                    <Button type='submit'>Submit</Button>
-                            }
-                        </DialogActions>
-                    </Form>
-                </Formik>
-            </Dialog>
+                </div>
+            </div>
         </div>
+
     );
 }
+
+export default Product;
