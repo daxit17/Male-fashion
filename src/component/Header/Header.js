@@ -1,7 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logOutAction } from "../../Redux/Actions/Auth_Actions";
+import Alert from "../Alert/Alert";
 
 function Header(props) {
+
+  let auth = useSelector(state => state.auth);
+
+  let dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logOutAction());
+  }
+
   return (
     <header className="header-section d-none d-xl-block">
       <div className="header-wrapper">
@@ -39,7 +51,7 @@ function Header(props) {
                       </li>
                       <li className="has-dropdown has-megaitem">
                         <NavLink to='/Data' exact>
-                          Data 
+                          Data
                         </NavLink>
                       </li>
                       <li>
@@ -49,7 +61,13 @@ function Header(props) {
                         <NavLink to='/Contact' exact>Contact Us</NavLink>
                       </li>
                       <li>
-                        <NavLink to='/Login' exact>Login</NavLink>
+                        {
+                          auth.user === null ?
+                            <NavLink to='/Login' exact>Login</NavLink>
+                            :
+                            <NavLink to='/Login' exact onClick={() => handleLogOut()}>LogOut</NavLink>
+
+                        }
                       </li>
                     </ul>
                   </nav>
@@ -83,6 +101,7 @@ function Header(props) {
                     </a>
                   </li>
                 </ul>
+                <Alert />
                 {/* End Header Action Link */}
               </div>
             </div>

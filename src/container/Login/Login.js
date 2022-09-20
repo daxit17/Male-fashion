@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Form, FormGroup, Input, Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Formik, useFormik } from 'formik';
+import { useDispatch } from "react-redux";
+import { forgotPassword, googleSignIn, signInAction, signUpAction } from '../../Redux/Actions/Auth_Actions';
 
 const Login = () => {
     const [userType, setUserType] = useState('login')
@@ -52,23 +54,29 @@ const Login = () => {
 
     let schema = yup.object().shape(schemaObj);
 
+    let dispatch = useDispatch();
+
     // handleData
 
     const handleData = (values) => {
-        let localData = JSON.parse(localStorage.getItem("user"))
 
-        if (localData === null) {
-            localStorage.setItem("user", JSON.stringify([values]))
-        } else {
-            localData.push(values);
-            localStorage.setItem("user", JSON.stringify(localData));
-        }
+        dispatch(signUpAction(values));
+
+        // let localData = JSON.parse(localStorage.getItem("user"))
+
+        // if (localData === null) {
+        //     localStorage.setItem("user", JSON.stringify([values]))
+        // } else {
+        //     localData.push(values);
+        //     localStorage.setItem("user", JSON.stringify(localData));
+        // }
     }
 
     // handleValue
 
-    const handleValue = () => {
-        localStorage.setItem("user", "123");
+    const handleValue = (values) => {
+        localStorage.setItem("User", "123");
+        // dispatch(signInAction(values));
     }
 
     const formik = useFormik({
@@ -76,15 +84,21 @@ const Login = () => {
         validationSchema: schema,
         enableReinitialize: true,
         onSubmit: values => {
-            
-            if (userType === 'login') {
-                handleValue();
-            } else {
+
+            if (userType === 'login' && reset === false) {
+                handleValue(values);
+            } else if (userType != 'login' && reset === false) {
                 handleData(values);
+            } else if (reset === true) {
+                dispatch(forgotPassword(values));
             }
 
         },
     });
+
+    const handleGoogleSignIn = () => {
+        dispatch(googleSignIn());
+    }
 
     let { handleChange, errors, handleSubmit, handleBlur, touched } = formik;
 
@@ -132,7 +146,7 @@ const Login = () => {
                                         :
                                         <Col md={8}>
                                             <FormGroup className="mt-3 mt-md-0">
-                                            <label>Enter Your Name<span>*</span></label>
+                                                <label>Enter Your Name<span>*</span></label>
                                                 <Input type="text"
                                                     className="form-control"
                                                     name="name"
@@ -146,7 +160,7 @@ const Login = () => {
                                 }
                                 <Col md={8}>
                                     <FormGroup className="mt-3 mt-md-0">
-                                    <label>Enter Your Email<span>*</span></label>
+                                        <label>Enter Your Email<span>*</span></label>
                                         <Input type="email"
                                             className="form-control"
                                             name="email"
@@ -161,7 +175,7 @@ const Login = () => {
                                     !reset ?
                                         <Col md={8}>
                                             <FormGroup className="mt-3 mt-md-0">
-                                    <label>Enter Your Password<span>*</span></label>
+                                                <label>Enter Your Password<span>*</span></label>
                                                 <Input type="password"
                                                     name="password"
                                                     className="form-control"
@@ -216,6 +230,7 @@ const Login = () => {
                                     :
                                     null
                             }
+                            <button type="submit" className='btn btn-md btn-black-default-hover d-block mx-auto' onClick={() => handleGoogleSignIn()}>Login With Google</button>
                         </Form>
                     </Formik>
                 </Container>

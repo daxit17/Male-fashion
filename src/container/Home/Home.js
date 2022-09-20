@@ -377,17 +377,18 @@ function Home(props) {
         </div>
         {/* Start Section Content Text Area */}
         <Swiper
-          slidesPerView={3}
-          grid={{
-            rows: 2,
-          }}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Grid, Pagination]}
-          className="mySwiper container"
-        >
+        slidesPerView={3}
+        spaceBetween={30}
+        slidesPerGroup={3}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper container"
+      >
           <div
             className="product-wrapper"
             data-aos="fade-up"
@@ -2217,281 +2218,281 @@ function Home(props) {
                       <div className="swiper-wrapper">
                         {/* Start Product Default Single Item */}
                         <SwiperSlide>
-                        <div className="blog-default-single-item blog-color--golden swiper-slide">
-                          <div className="image-box">
-                            <a
-                              href="blog-single-sidebar-left.html"
-                              className="image-link"
-                            >
-                              <img
-                                className="img-fluid"
-                                src="assets/images/blog/blog-grid-home-1-img-1.jpg"
-                                alt
-                              />
-                            </a>
-                          </div>
-                          <div className="content">
-                            <h6 className="title">
-                              <a href="blog-single-sidebar-left.html">
-                                Blog Post One
-                              </a>
-                            </h6>
-                            <p>
-                              Donec vitae hendrerit arcu, sit amet faucibus nisl.
-                              Cras pretium arcu ex. Aenean posuere libero eu augue
-                              condimentum rhoncus. Praesent
-                            </p>
-                            <div className="inner">
+                          <div className="blog-default-single-item blog-color--golden swiper-slide">
+                            <div className="image-box">
                               <a
                                 href="blog-single-sidebar-left.html"
-                                className="read-more-btn icon-space-left"
+                                className="image-link"
                               >
-                                Read More{" "}
-                                <span>
-                                  <i className="ion-ios-arrow-thin-right" />
-                                </span>
+                                <img
+                                  className="img-fluid"
+                                  src="assets/images/blog/blog-grid-home-1-img-1.jpg"
+                                  alt
+                                />
                               </a>
-                              <div className="post-meta">
-                                <a href="#" className="date">
-                                  24 Apr
-                                </a>
-                              </div>
                             </div>
-                          </div>
-                        </div>
-                        </SwiperSlide>
-                        {/* End Product Default Single Item */}
-                        {/* Start Product Default Single Item */}
-                        <SwiperSlide>
-                        <div className="blog-default-single-item blog-color--golden swiper-slide">
-                          <div className="image-box">
-                            <a
-                              href="blog-single-sidebar-left.html"
-                              className="image-link"
-                            >
-                              <img
-                                className="img-fluid"
-                                src="assets/images/blog/blog-grid-home-1-img-2.jpg"
-                                alt
-                              />
-                            </a>
-                          </div>
-                          <div className="content">
-                            <h6 className="title">
-                              <a href="blog-single-sidebar-left.html">
-                                Blog Post Two
-                              </a>
-                            </h6>
-                            <p>
-                              Donec vitae hendrerit arcu, sit amet faucibus nisl.
-                              Cras pretium arcu ex. Aenean posuere libero eu augue
-                              condimentum rhoncus. Praesent
-                            </p>
-                            <div className="inner">
-                              <a
-                                href="#"
-                                className="read-more-btn icon-space-left"
-                              >
-                                Read More{" "}
-                                <span>
-                                  <i className="ion-ios-arrow-thin-right" />
-                                </span>
-                              </a>
-                              <div className="post-meta">
+                            <div className="content">
+                              <h6 className="title">
+                                <a href="blog-single-sidebar-left.html">
+                                  Blog Post One
+                                </a>
+                              </h6>
+                              <p>
+                                Donec vitae hendrerit arcu, sit amet faucibus nisl.
+                                Cras pretium arcu ex. Aenean posuere libero eu augue
+                                condimentum rhoncus. Praesent
+                              </p>
+                              <div className="inner">
                                 <a
                                   href="blog-single-sidebar-left.html"
-                                  className="date"
+                                  className="read-more-btn icon-space-left"
                                 >
-                                  24 Apr
+                                  Read More{" "}
+                                  <span>
+                                    <i className="ion-ios-arrow-thin-right" />
+                                  </span>
                                 </a>
+                                <div className="post-meta">
+                                  <a href="#" className="date">
+                                    24 Apr
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
                         </SwiperSlide>
                         {/* End Product Default Single Item */}
                         {/* Start Product Default Single Item */}
                         <SwiperSlide>
-                        <div className="blog-default-single-item blog-color--golden swiper-slide">
-                          <div className="image-box">
-                            <a
-                              href="blog-single-sidebar-left.html"
-                              className="image-link"
-                            >
-                              <img
-                                className="img-fluid"
-                                src="assets/images/blog/blog-grid-home-1-img-3.jpg"
-                                alt
-                              />
-                            </a>
-                          </div>
-                          <div className="content">
-                            <h6 className="title">
-                              <a href="blog-single-sidebar-left.html">
-                                Blog Post Three
-                              </a>
-                            </h6>
-                            <p>
-                              Donec vitae hendrerit arcu, sit amet faucibus nisl.
-                              Cras pretium arcu ex. Aenean posuere libero eu augue
-                              condimentum rhoncus. Praesent
-                            </p>
-                            <div className="inner">
+                          <div className="blog-default-single-item blog-color--golden swiper-slide">
+                            <div className="image-box">
                               <a
                                 href="blog-single-sidebar-left.html"
-                                className="read-more-btn icon-space-left"
+                                className="image-link"
                               >
-                                Read More{" "}
-                                <span>
-                                  <i className="ion-ios-arrow-thin-right" />
-                                </span>
+                                <img
+                                  className="img-fluid"
+                                  src="assets/images/blog/blog-grid-home-1-img-2.jpg"
+                                  alt
+                                />
                               </a>
-                              <div className="post-meta">
-                                <a href="#" className="date">
-                                  24 Apr
+                            </div>
+                            <div className="content">
+                              <h6 className="title">
+                                <a href="blog-single-sidebar-left.html">
+                                  Blog Post Two
                                 </a>
+                              </h6>
+                              <p>
+                                Donec vitae hendrerit arcu, sit amet faucibus nisl.
+                                Cras pretium arcu ex. Aenean posuere libero eu augue
+                                condimentum rhoncus. Praesent
+                              </p>
+                              <div className="inner">
+                                <a
+                                  href="#"
+                                  className="read-more-btn icon-space-left"
+                                >
+                                  Read More{" "}
+                                  <span>
+                                    <i className="ion-ios-arrow-thin-right" />
+                                  </span>
+                                </a>
+                                <div className="post-meta">
+                                  <a
+                                    href="blog-single-sidebar-left.html"
+                                    className="date"
+                                  >
+                                    24 Apr
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
                         </SwiperSlide>
                         {/* End Product Default Single Item */}
                         {/* Start Product Default Single Item */}
                         <SwiperSlide>
-                        <div className="blog-default-single-item blog-color--golden swiper-slide">
-                          <div className="image-box">
-                            <a
-                              href="blog-single-sidebar-left.html"
-                              className="image-link"
-                            >
-                              <img
-                                className="img-fluid"
-                                src="assets/images/blog/blog-grid-home-1-img-4.jpg"
-                                alt
-                              />
-                            </a>
-                          </div>
-                          <div className="content">
-                            <h6 className="title">
-                              <a href="blog-single-sidebar-left.html">
-                                Blog Post Four
-                              </a>
-                            </h6>
-                            <p>
-                              Donec vitae hendrerit arcu, sit amet faucibus nisl.
-                              Cras pretium arcu ex. Aenean posuere libero eu augue
-                              condimentum rhoncus. Praesent
-                            </p>
-                            <div className="inner">
+                          <div className="blog-default-single-item blog-color--golden swiper-slide">
+                            <div className="image-box">
                               <a
                                 href="blog-single-sidebar-left.html"
-                                className="read-more-btn icon-space-left"
+                                className="image-link"
                               >
-                                Read More{" "}
-                                <span>
-                                  <i className="ion-ios-arrow-thin-right" />
-                                </span>
+                                <img
+                                  className="img-fluid"
+                                  src="assets/images/blog/blog-grid-home-1-img-3.jpg"
+                                  alt
+                                />
                               </a>
-                              <div className="post-meta">
-                                <a href="#" className="date">
-                                  24 Apr
+                            </div>
+                            <div className="content">
+                              <h6 className="title">
+                                <a href="blog-single-sidebar-left.html">
+                                  Blog Post Three
                                 </a>
+                              </h6>
+                              <p>
+                                Donec vitae hendrerit arcu, sit amet faucibus nisl.
+                                Cras pretium arcu ex. Aenean posuere libero eu augue
+                                condimentum rhoncus. Praesent
+                              </p>
+                              <div className="inner">
+                                <a
+                                  href="blog-single-sidebar-left.html"
+                                  className="read-more-btn icon-space-left"
+                                >
+                                  Read More{" "}
+                                  <span>
+                                    <i className="ion-ios-arrow-thin-right" />
+                                  </span>
+                                </a>
+                                <div className="post-meta">
+                                  <a href="#" className="date">
+                                    24 Apr
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
                         </SwiperSlide>
                         {/* End Product Default Single Item */}
                         {/* Start Product Default Single Item */}
                         <SwiperSlide>
-                        <div className="blog-default-single-item blog-color--golden swiper-slide">
-                          <div className="image-box">
-                            <a
-                              href="blog-single-sidebar-left.html"
-                              className="image-link"
-                            >
-                              <img
-                                className="img-fluid"
-                                src="assets/images/blog/blog-grid-home-1-img-5.jpg"
-                                alt
-                              />
-                            </a>
-                          </div>
-                          <div className="content">
-                            <h6 className="title">
-                              <a href="blog-single-sidebar-left.html">
-                                Blog Post Five
-                              </a>
-                            </h6>
-                            <p>
-                              Donec vitae hendrerit arcu, sit amet faucibus nisl.
-                              Cras pretium arcu ex. Aenean posuere libero eu augue
-                              condimentum rhoncus. Praesent
-                            </p>
-                            <div className="inner">
+                          <div className="blog-default-single-item blog-color--golden swiper-slide">
+                            <div className="image-box">
                               <a
                                 href="blog-single-sidebar-left.html"
-                                className="read-more-btn icon-space-left"
+                                className="image-link"
                               >
-                                Read More{" "}
-                                <span>
-                                  <i className="ion-ios-arrow-thin-right" />
-                                </span>
+                                <img
+                                  className="img-fluid"
+                                  src="assets/images/blog/blog-grid-home-1-img-4.jpg"
+                                  alt
+                                />
                               </a>
-                              <div className="post-meta">
-                                <a href="#" className="date">
-                                  24 Apr
+                            </div>
+                            <div className="content">
+                              <h6 className="title">
+                                <a href="blog-single-sidebar-left.html">
+                                  Blog Post Four
                                 </a>
+                              </h6>
+                              <p>
+                                Donec vitae hendrerit arcu, sit amet faucibus nisl.
+                                Cras pretium arcu ex. Aenean posuere libero eu augue
+                                condimentum rhoncus. Praesent
+                              </p>
+                              <div className="inner">
+                                <a
+                                  href="blog-single-sidebar-left.html"
+                                  className="read-more-btn icon-space-left"
+                                >
+                                  Read More{" "}
+                                  <span>
+                                    <i className="ion-ios-arrow-thin-right" />
+                                  </span>
+                                </a>
+                                <div className="post-meta">
+                                  <a href="#" className="date">
+                                    24 Apr
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
                         </SwiperSlide>
                         {/* End Product Default Single Item */}
                         {/* Start Product Default Single Item */}
                         <SwiperSlide>
-                        <div className="blog-default-single-item blog-color--golden swiper-slide">
-                          <div className="image-box">
-                            <a
-                              href="blog-single-sidebar-left.html"
-                              className="image-link"
-                            >
-                              <img
-                                className="img-fluid"
-                                src="assets/images/blog/blog-grid-home-1-img-6.jpg"
-                                alt
-                              />
-                            </a>
-                          </div>
-                          <div className="content">
-                            <h6 className="title">
-                              <a href="blog-single-sidebar-left.html">
-                                Blog Post Six
-                              </a>
-                            </h6>
-                            <p>
-                              Donec vitae hendrerit arcu, sit amet faucibus nisl.
-                              Cras pretium arcu ex. Aenean posuere libero eu augue
-                              condimentum rhoncus. Praesent
-                            </p>
-                            <div className="inner">
+                          <div className="blog-default-single-item blog-color--golden swiper-slide">
+                            <div className="image-box">
                               <a
                                 href="blog-single-sidebar-left.html"
-                                className="read-more-btn icon-space-left"
+                                className="image-link"
                               >
-                                Read More{" "}
-                                <span>
-                                  <i className="ion-ios-arrow-thin-right" />
-                                </span>
+                                <img
+                                  className="img-fluid"
+                                  src="assets/images/blog/blog-grid-home-1-img-5.jpg"
+                                  alt
+                                />
                               </a>
-                              <div className="post-meta">
-                                <a href="#" className="date">
-                                  24 Apr
+                            </div>
+                            <div className="content">
+                              <h6 className="title">
+                                <a href="blog-single-sidebar-left.html">
+                                  Blog Post Five
                                 </a>
+                              </h6>
+                              <p>
+                                Donec vitae hendrerit arcu, sit amet faucibus nisl.
+                                Cras pretium arcu ex. Aenean posuere libero eu augue
+                                condimentum rhoncus. Praesent
+                              </p>
+                              <div className="inner">
+                                <a
+                                  href="blog-single-sidebar-left.html"
+                                  className="read-more-btn icon-space-left"
+                                >
+                                  Read More{" "}
+                                  <span>
+                                    <i className="ion-ios-arrow-thin-right" />
+                                  </span>
+                                </a>
+                                <div className="post-meta">
+                                  <a href="#" className="date">
+                                    24 Apr
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </SwiperSlide>
+                        {/* End Product Default Single Item */}
+                        {/* Start Product Default Single Item */}
+                        <SwiperSlide>
+                          <div className="blog-default-single-item blog-color--golden swiper-slide">
+                            <div className="image-box">
+                              <a
+                                href="blog-single-sidebar-left.html"
+                                className="image-link"
+                              >
+                                <img
+                                  className="img-fluid"
+                                  src="assets/images/blog/blog-grid-home-1-img-6.jpg"
+                                  alt
+                                />
+                              </a>
+                            </div>
+                            <div className="content">
+                              <h6 className="title">
+                                <a href="blog-single-sidebar-left.html">
+                                  Blog Post Six
+                                </a>
+                              </h6>
+                              <p>
+                                Donec vitae hendrerit arcu, sit amet faucibus nisl.
+                                Cras pretium arcu ex. Aenean posuere libero eu augue
+                                condimentum rhoncus. Praesent
+                              </p>
+                              <div className="inner">
+                                <a
+                                  href="blog-single-sidebar-left.html"
+                                  className="read-more-btn icon-space-left"
+                                >
+                                  Read More{" "}
+                                  <span>
+                                    <i className="ion-ios-arrow-thin-right" />
+                                  </span>
+                                </a>
+                                <div className="post-meta">
+                                  <a href="#" className="date">
+                                    24 Apr
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </SwiperSlide>
                         {/* End Product Default Single Item */}
                       </div>
