@@ -1,11 +1,14 @@
-const Islogin = () => {
-    let localData = localStorage.getItem("user");
+import { useSelector } from "react-redux";
 
-    if (localData) {
-        return true;
-    } else {
-        return false;
-    }
+const Islogin = () => {
+
+    // const auth = useSelector(state => state.auth)
+
+    // if (auth.user) {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
 
 }
 

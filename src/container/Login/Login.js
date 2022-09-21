@@ -75,8 +75,8 @@ const Login = () => {
     // handleValue
 
     const handleValue = (values) => {
-        localStorage.setItem("User", "123");
-        // dispatch(signInAction(values));
+        // localStorage.setItem("User", "123");
+        dispatch(signInAction(values));
     }
 
     const formik = useFormik({
