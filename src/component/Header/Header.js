@@ -49,10 +49,16 @@ function Header(props) {
                           Blog
                         </NavLink>
                       </li>
-                      <li className="has-dropdown has-megaitem">
-                        <NavLink to='/Data' exact>
-                          Data
-                        </NavLink>
+                      <li className="has-dropdown">
+                        <a href="#">Pages <i className="fa fa-angle-down" /></a>
+                        <ul className="sub-menu">
+                          <li>
+                            <NavLink to="/products_admin">Adminpanel</NavLink>
+                          </li>
+                          <li>
+                            <NavLink to="/categories">categories</NavLink>
+                          </li>
+                        </ul>
                       </li>
                       <li>
                         <NavLink to='/About' exact>About Us</NavLink>
@@ -85,19 +91,6 @@ function Header(props) {
                     <a href="#offcanvas-add-cart" className="offcanvas-toggle">
                       <i className="icon-bag" />
                       <span className="item-count">3</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#search">
-                      <i className="icon-magnifier" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#offcanvas-about"
-                      className="offacnvas offside-about offcanvas-toggle"
-                    >
-                      <i className="icon-menu" />
                     </a>
                   </li>
                 </ul>

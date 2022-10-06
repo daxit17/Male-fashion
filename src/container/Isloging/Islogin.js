@@ -1,15 +1,12 @@
-import { useSelector } from "react-redux";
-
 const Islogin = () => {
 
-    // const auth = useSelector(state => state.auth)
+    let user = JSON.parse(localStorage.getItem("user"));
 
-    // if (auth.user) {
-    //     return true;
-    // } else {
-    //     return false;
-    // }
+    if (user) {
+        return true;
+    } else {
+        return false;
+    }
 
 }
-
 export default Islogin;

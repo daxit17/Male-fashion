@@ -23,7 +23,7 @@ function* SignInUser(action) {
         const user = yield call(SignInApi, action.payload);
         yield put(signedInAction(user))
         history.push("/")
-        yield put(setAlert({ text: user.payload, color: "success" }))
+        yield put(setAlert({ text: "Login succesfully", color: "success" }))
         console.log(user);
     } catch (e) {
         yield put(setAlert({ text: e.payload, color: "error" }))

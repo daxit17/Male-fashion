@@ -43,7 +43,7 @@ export const SignInApi = (data) => {
                 const user = userCredential.user;
 
                 if (user.emailVerified) {
-                    resolve({ payload: "You are successfully login..." })
+                    resolve({ payload: user})
                 } else {
                     reject({ payload: "Please verify your email..." })
                 }

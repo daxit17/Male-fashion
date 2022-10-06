@@ -77,6 +77,7 @@ const Login = () => {
     const handleValue = (values) => {
         // localStorage.setItem("User", "123");
         dispatch(signInAction(values));
+        formik.resetForm()
     }
 
     const formik = useFormik({
@@ -87,7 +88,7 @@ const Login = () => {
 
             if (userType === 'login' && reset === false) {
                 handleValue(values);
-            } else if (userType != 'login' && reset === false) {
+            } else if (userType === 'signup' && reset === false) {
                 handleData(values);
             } else if (reset === true) {
                 dispatch(forgotPassword(values));
