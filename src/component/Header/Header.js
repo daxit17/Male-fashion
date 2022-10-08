@@ -21,7 +21,6 @@ function Header(props) {
           <div className="container-fluid">
             <div className="row">
               <div className="col-12 d-flex align-items-center justify-content-between">
-                {/* Start Header Logo */}
                 <div className="header-logo">
                   <div className="logo">
                     <a href="index.html">
@@ -29,19 +28,12 @@ function Header(props) {
                     </a>
                   </div>
                 </div>
-                {/* End Header Logo */}
-                {/* Start Header Main Menu */}
                 <div className="main-menu menu-color--black menu-hover-color--golden">
                   <nav>
                     <ul>
                       <li className="has-dropdown">
                         <NavLink className="active main-menu-link" to="/" exact>
                           Home
-                        </NavLink>
-                      </li>
-                      <li className="has-dropdown">
-                        <NavLink to='/Products' exact>
-                          Products
                         </NavLink>
                       </li>
                       <li className="has-dropdown">
@@ -53,7 +45,13 @@ function Header(props) {
                         <a href="#">Pages <i className="fa fa-angle-down" /></a>
                         <ul className="sub-menu">
                           <li>
-                            <NavLink to="/products_admin">Adminpanel</NavLink>
+                            <NavLink to="/products_admin">Products-AdminPanel</NavLink>
+                          </li>
+                          <li>
+                            <NavLink to="/Products" exact>Products</NavLink>
+                          </li>
+                          <li>
+                            <NavLink to="/categories_admin">categories-AdminPanel</NavLink>
                           </li>
                           <li>
                             <NavLink to="/categories">categories</NavLink>
@@ -78,8 +76,6 @@ function Header(props) {
                     </ul>
                   </nav>
                 </div>
-                {/* End Header Main Menu Start */}
-                {/* Start Header Action Link */}
                 <ul className="header-action-link action-color--black action-hover-color--golden">
                   <li>
                     <a href="#offcanvas-wishlish" className="offcanvas-toggle">
@@ -93,10 +89,15 @@ function Header(props) {
                       <span className="item-count">3</span>
                     </a>
                   </li>
+                  <li>
+                    <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
+                      <i class="icon-menu"></i>
+                    </a>
+                  </li>
                 </ul>
                 <Alert />
-                {/* End Header Action Link */}
               </div>
+
             </div>
           </div>
         </div>

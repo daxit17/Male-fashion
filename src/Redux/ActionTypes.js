@@ -1,13 +1,19 @@
 export const SIGN_UP_USER = "SIGN_UP_USER";
 export const SIGN_IN_USER = "SIGN_IN_USER";
 export const SIGNED_IN_USER = "SIGNED_IN_USER";
-
 export const LOG_OUT = "LOG_OUT";
 export const LOGGED_OUT = "LOGGED_OUT";
-
 export const SET_ALERT = "SET_ALERT";
 export const RESET_ALERT = "RESET_ALERT";
-
 export const GOOGLE_SIGN_IN = "GOOGLE_SIGN_IN";
-
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
+
+export const GET_PRODUCTS_DATA = "GET_PRODUCTS_DATA";
+export const PRODUCTS_ADD = "PRODUCTS_ADD";
+export const PRODUCTS_DELETE = "PRODUCTS_DELETE";
+export const PRODUCTS_UPDATE = "PRODUCTS_UPDATE";
+
+export const GET_CATEGORY_DATA = "GET_CATEGORY_DATA";
+export const ADD_CATEGORY_DATA = "ADD_CATEGORY_DATA";
+export const DELETE_CATEGORY_DATA = "DELETE_CATEGORY_DATA";
+export const UPDATE_CATEGORY_DATA = "UPDATE_CATEGORY_DATA";

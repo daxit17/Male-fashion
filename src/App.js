@@ -15,10 +15,9 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./Redux/Store";
 import { SnackbarProvider } from 'notistack';
 import { PersistGate } from 'redux-persist/integration/react';
-import Layout from "./admin-panel/components/Layout";
-import Category_Admin from "./admin-panel/container/category/Category_Admin";
-import Products_Admin from "./admin-panel/container/products/Products_Admin";
 import Categories from "./container/Categories/Categories";
+import Products_Admin from "./admin-panel/container/Products_Admin";
+import Category_Admin from "./admin-panel/container/Category_Admin";
 
 function App() {
   return (
@@ -29,16 +28,14 @@ function App() {
             <Header />
             <Switch>
               <PublicRouting path={"/"} component={Home} exact />
-              <PrivateRouting path={"/Products"} component={Products} exact />
               <PublicRouting path={"/Blog"} component={Blog} exact />
               <PublicRouting path={"/About"} component={About} exact />
               <PublicRouting path={"/Contact"} component={Contact} exact />
               <PublicRouting path={"/Login"} component={Login} restricted={true} exact />
+              <PrivateRouting path={"/products_admin"} component={Products_Admin} exact />
+              <PrivateRouting path={"/Products"} component={Products} exact />
+              <PrivateRouting path={"/categories_admin"} component={Category_Admin} exact />
               <PrivateRouting path={"/categories"} component={Categories} exact />
-              <Layout>
-                <PrivateRouting path={"/category_admin"} component={Category_Admin} exact />
-                <PrivateRouting path={"/products_admin"} component={Products_Admin} exact />
-              </Layout>
             </Switch>
             <Footer />
           </PersistGate>
