@@ -75,7 +75,7 @@ export default function Category_Admin() {
     // schema
 
     let schema = yup.object().shape({
-        name: yup.string().min(2).max(25).required("Please enter your name..."),
+        categoryname: yup.string().min(2).max(25).required("Please enter your name..."),
         profile_img: yup.mixed().required("Please select profile image...")
     });
 
@@ -83,7 +83,7 @@ export default function Category_Admin() {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
+            categoryname: '',
             profile_img: '',
         },
         validationSchema: schema,
@@ -105,7 +105,7 @@ export default function Category_Admin() {
     // Table columns
 
     const columns = [
-        { field: 'name', headerName: 'NAME', width: 400 },
+        { field: 'categoryname', headerName: 'NAME', width: 400 },
         {
             field: 'profile_img',
             headerName: 'PROFILE-IMG',
@@ -197,8 +197,8 @@ export default function Category_Admin() {
                             <DialogContent>
                                 <TextField
                                     margin="dense"
-                                    name="name"
-                                    id="name"
+                                    name="categoryname"
+                                    id="categoryname"
                                     label="Enter Category Name"
                                     type="text"
                                     value={values.name}
@@ -207,7 +207,7 @@ export default function Category_Admin() {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
-                                {errors.name && touched.name ? <p className='Err'>{errors.name}</p> : ''}
+                                {errors.categoryname && touched.categoryname ? <p className='Err'>{errors.categoryname}</p> : ''}
                                 <input
                                     name="profile_img"
                                     id="profile_img"

@@ -1,109 +1,71 @@
-import React, { useState } from 'react';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from 'reactstrap';
+import { GetProducts } from '../../Redux/Actions/Products_Admin_Action';
+import NavBar from './NavBar';
 
-const orgData = [
-    {
-        id: 101,
-        name: "Table",
-        quantity: 5000,
-        price: "$" + " " + 2500,
-        warrenty: 1
-    },
-    {
-        id: 102,
-        name: "ALIQUAM LOBORTIS",
-        quantity: 1000,
-        price: "$" + " " + 3000,
-        warrenty: 2021
-    },
-    {
-        id: 103,
-        name: " CONDIMENTUM POSUERE",
-        quantity: 5000,
-        price: "$" + " " + 4000,
-        warrenty: 3
-    },
-    {
-        id: 104,
-        name: " DONEC EU LIBERO AC",
-        quantity: 200,
-        price: "$" + " " + 8000,
-        warrenty: 1
-    },
-    {
-        id: 105,
-        name: " EPICURI PER LOBORTIS",
-        quantity: 2500,
-        price: "$" + " " + 4500,
-        warrenty: 2
-    },
-    {
-        id: 106,
-        name: "Table",
-        quantity: 5000,
-        price: "$" + " " + 2500,
-        warrenty: 1
-    },
-    {
-        id: 107,
-        name: "ALIQUAM LOBORTIS",
-        quantity: 1000,
-        price: "$" + " " + 3000,
-        warrenty: 2021
-    },
-    {
-        id: 108,
-        name: " CONDIMENTUM POSUERE",
-        quantity: 5000,
-        price: "$" + " " + 4000,
-        warrenty: 3
-    },
-    {
-        id: 109,
-        name: " DONEC EU LIBERO AC",
-        quantity: 200,
-        price: "$" + " " + 8000,
-        warrenty: 1
-    },
-    {
-        id: 110,
-        name: " EPICURI PER LOBORTIS",
-        quantity: 2500,
-        price: "$" + " " +4500,
-        warrenty: 2
-    },
-]
+function Products(props) {
 
+    const dispatch = useDispatch();
 
+    const [product, setProduct] = useState([]);
 
-function Product(props) {
-    const [pdata, setPdata] = useState(orgData)
+    const products = useSelector(state => state.products);
 
-    const Sdata = (val) => {
-        const searchdata = orgData.filter((l) => (
-            l.name.toLowerCase().includes(val.toLowerCase()) ||
-            l.quantity.toString().includes(val) ||
-            l.price.includes(val) ||
-            l.warrenty.toString().includes(val) ||
-            l.id.toString().includes(val)
-        ))
-        setPdata(searchdata);
+    // useEffect
+
+    useEffect(() => {
+        dispatch(GetProducts());
+        setProduct(products.products);
+    }, []);
+
+    // uniqueList
+
+    const uniqueList = [
+        "ALL",
+        ...new Set(
+            products.products.map((m) => {
+                return m.categoryname;
+            })
+        )
+    ]
+
+    // FilterItems
+
+    const FilterItems = (categoryname) => {
+
+        if (categoryname === "ALL") {
+            setProduct(products);
+            return;
+        }
+
+        const UpdateList = products.products.filter((m1, i) => {
+            return (
+                m1.categoryname === categoryname
+            )
+        })
+
+        setProduct(UpdateList);
+
     }
 
-    return (
-        <div>
+    let FinalData = product.length > 0 ? product : products.products;
 
-            <div class="breadcrumb-section breadcrumb-bg-color--golden">
-                <div class="breadcrumb-wrapper">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="breadcrumb-title">Products</h3>
-                                <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+    return (
+        <>
+
+            <div className="breadcrumb-section breadcrumb-bg-color--golden">
+                <div className="breadcrumb-wrapper">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <h3 className="breadcrumb-title">Products</h3>
+                                <div className="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                                     <nav aria-label="breadcrumb">
                                         <ul>
-                                            <li><a href="#">Home</a></li>
-                                            <li class="active" aria-current="page">Products</li>
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="#">Pages</a></li>
+                                            <li className="active" aria-current="page">Products</li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -113,51 +75,55 @@ function Product(props) {
                 </div>
             </div>
 
-            <div className='container'>
+            <NavBar FilterItems={FilterItems} uniqueList={uniqueList} />
 
-                <input className='ms-4 rounded-1 p-2'
-                    margin="dense"
-                    placeholder='Search'
-                    name="name"
-                    label="Search"
-                    type="text"
-                    fullWidth
-                    variant="standard"
-                    onChange={(e) => Sdata(e.target.value)}
-                />
+            <div className='catogories'>
+                <div className='container'>
+                    <div className='row'>
+                        {
+                            FinalData && FinalData.map((v) => {
 
-                <div className="row">
-                    {
-                        pdata.map((p, i) => {
-                            return (
-                                <Card key={i} className="col-3 m-4"
-                                >
-                                    <CardBody>
-                                        <CardTitle tag="h5" className='fw-bold fs-2' >
-                                            {p.name}
-                                        </CardTitle>
-                                        <CardSubtitle
-                                            className="mb-2 text-muted fs-4"
-                                            tag="h6"
+                                let { name, profile_img, price, quantity } = v;
+
+                                return (
+                                    <>
+                                        <Card
+                                            className='text-center'
+                                            style={{
+                                                width: '18rem',
+                                                marginRight: "4rem",
+                                                marginBottom: "6rem"
+                                            }}
                                         >
-                                            {p.quantity}
-                                        </CardSubtitle>
-                                        <CardText className='fs-5'>
-                                            {p.warrenty}
-                                        </CardText>
-                                        <CardText className='fs-5'>
-                                            {p.price}
-                                        </CardText>
-                                    </CardBody>
-                                </Card>
-                            )
-                        })
-                    }
+                                            <img
+                                                alt="Sample"
+                                                height={180}
+                                                src={profile_img}
+                                            />
+                                            <CardBody>
+                                                <CardTitle tag="h5">
+                                                    {"Name : " + name}
+                                                </CardTitle>
+                                                <CardSubtitle
+                                                    className="mb-2 text-muted"
+                                                    tag="h6"
+                                                >
+                                                    {"Price : " + price}
+                                                </CardSubtitle>
+                                                <Button>
+                                                    Buy Now
+                                                </Button>
+                                            </CardBody>
+                                        </Card>
+                                    </>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-
+        </>
     );
 }
 
-export default Product;
+export default Products;

@@ -43,6 +43,7 @@ function Products_Admin(props) {
     let dispatch = useDispatch();
 
     const products = useSelector(state => state.products);
+    const categories = useSelector(state => state.category);
 
     // handleInsert
 
@@ -79,7 +80,8 @@ function Products_Admin(props) {
         name: yup.string().min(2).max(25).required("Please enter products name..."),
         price: yup.number().required("Please enter products price").positive().integer(),
         quantity: yup.number().required("Please enter products quantity").positive().integer(),
-        profile_img: yup.mixed().required("Please select profile image...")
+        profile_img: yup.mixed().required("Please select profile image..."),
+        categoryname: yup.string().min(2).max(25).required("Please select category ..."),
     });
 
     // formik
@@ -90,6 +92,7 @@ function Products_Admin(props) {
             price: '',
             quantity: '',
             profile_img: '',
+            categoryname: ''
         },
         validationSchema: schema,
         onSubmit: values => {
@@ -121,6 +124,7 @@ function Products_Admin(props) {
                 <img src={params.row.profile_img} width={50} height={50} />
             )
         },
+        { field: 'categoryname', headerName: 'CATEGORY NAME', width: 200 },
         {
             field: 'action',
             headerName: 'ACTION',
@@ -252,6 +256,26 @@ function Products_Admin(props) {
                                     onChange={(e) => setFieldValue("profile_img", e.target.files[0])}
                                 />
                                 {errors.profile_img && touched.profile_img ? <p className='Err'>{errors.profile_img}</p> : null}
+
+                                <select
+                                    name="categoryname"
+                                    onChange={handleChange}
+                                    className='form-select'
+                                >
+                                    {
+                                        categories.category.map((v) => {
+
+                                            const { id, categoryname } = v
+
+                                            return (
+                                                <option value={categoryname}>{categoryname}</option>
+                                            )
+
+                                        })
+                                    }
+
+                                </select>
+
                                 <DialogActions>
                                     <Button onClick={handleClose}>NO</Button>
                                     <Button type="submit">YES</Button>
