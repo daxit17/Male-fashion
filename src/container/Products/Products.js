@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 import { GetProducts } from '../../Redux/Actions/Products_Admin_Action';
 import NavBar from './NavBar';
 
 function Products(props) {
 
-    const dispatch = useDispatch();
-
     const [product, setProduct] = useState([]);
 
     const products = useSelector(state => state.products);
+
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     // useEffect
 
@@ -46,6 +48,14 @@ function Products(props) {
         })
 
         setProduct(UpdateList);
+
+    }
+
+    // handleProductDetails
+
+    const handleProductDetails = (v) => {
+
+        history.push("/products_details", v);
 
     }
 
@@ -110,8 +120,8 @@ function Products(props) {
                                                 >
                                                     {"Price : " + price}
                                                 </CardSubtitle>
-                                                <Button>
-                                                    Buy Now
+                                                <Button onClick={() => handleProductDetails(v)}>
+                                                    Read More
                                                 </Button>
                                             </CardBody>
                                         </Card>

@@ -51,10 +51,13 @@ function Header(props) {
                             <NavLink to="/Products" exact>Products</NavLink>
                           </li>
                           <li>
-                            <NavLink to="/categories_admin">categories-AdminPanel</NavLink>
+                            <NavLink to="/categories_admin">Categories-AdminPanel</NavLink>
                           </li>
                           <li>
-                            <NavLink to="/categories">categories</NavLink>
+                            <NavLink to="/categories">Categories</NavLink>
+                          </li>
+                          <li>
+                            <NavLink to="/products_details">Product-Details</NavLink>
                           </li>
                         </ul>
                       </li>
