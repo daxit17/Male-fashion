@@ -13,7 +13,7 @@ const middleware = [sagaMiddleware, thunk];
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['auth']
+    whitelist: ['auth', 'cart', 'products']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

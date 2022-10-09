@@ -1,13 +1,21 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { AddCart } from '../../Redux/Actions/Cart_Actions';
 
 function Single_Product_Details(props) {
 
     const dispatch = useDispatch();
     const history = useHistory()
 
-    const productval = [props.location.state]
+    const productval = [props.location.state];
+
+    // handleCart
+
+    const handleCart = (v) => {
+        dispatch(AddCart(v));
+        history.push("/cart");
+    }
 
     return (
         <div>
@@ -80,7 +88,8 @@ function Single_Product_Details(props) {
                                                 </div>
                                                 <div className="d-flex align-items-center ">
                                                     <div className="product-add-to-cart-btn">
-                                                        <a href="#" className="btn btn-block btn-lg btn-black-default-hover" data-bs-toggle="modal" data-bs-target="#modalAddcart">+ Add To Cart</a>
+                                                        <a href="#" className="btn btn-block btn-lg btn-black-default-hover" data-bs-toggle="modal" data-bs-target="#modalAddcart"
+                                                            onClick={() => handleCart(v)}>+ Add To Cart</a>
                                                     </div>
                                                 </div>
 

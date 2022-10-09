@@ -19,6 +19,7 @@ import Categories from "./container/Categories/Categories";
 import Products_Admin from "./admin-panel/container/Products_Admin";
 import Category_Admin from "./admin-panel/container/Category_Admin";
 import Single_Product_Details from "./container/single-products-details/Single_Product_Details";
+import Cart from "./container/Cart/Cart";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <PrivateRouting path={"/categories_admin"} component={Category_Admin} exact />
               <PrivateRouting path={"/categories"} component={Categories} exact />
               <PrivateRouting path={"/products_details"} component={Single_Product_Details} exact />
+              <PrivateRouting path={"/cart"} component={Cart} exact />
             </Switch>
             <Footer />
           </PersistGate>

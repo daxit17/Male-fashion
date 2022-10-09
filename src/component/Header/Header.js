@@ -59,6 +59,9 @@ function Header(props) {
                           <li>
                             <NavLink to="/products_details">Product-Details</NavLink>
                           </li>
+                          <li>
+                            <NavLink to="/cart">Cart</NavLink>
+                          </li>
                         </ul>
                       </li>
                       <li>
