@@ -45,23 +45,29 @@ function Header(props) {
                         <a href="#">Pages <i className="fa fa-angle-down" /></a>
                         <ul className="sub-menu">
                           <li>
-                            <NavLink to="/products_admin">Products-AdminPanel</NavLink>
+                            <NavLink to="/products_admin" exact>Products-AdminPanel</NavLink>
                           </li>
                           <li>
                             <NavLink to="/Products" exact>Products</NavLink>
                           </li>
                           <li>
-                            <NavLink to="/categories_admin">Categories-AdminPanel</NavLink>
+                            <NavLink to="/categories_admin" exact>Categories-AdminPanel</NavLink>
                           </li>
                           <li>
-                            <NavLink to="/categories">Categories</NavLink>
+                            <NavLink to="/categories" exact>Categories</NavLink>
                           </li>
-                          <li>
+                          {/* <li>
                             <NavLink to="/products_details">Product-Details</NavLink>
+                          </li> */}
+                          <li>
+                            <NavLink to="/checkout" exact>Checkout</NavLink>
                           </li>
                           <li>
-                            <NavLink to="/cart">Cart</NavLink>
+                            <NavLink to="/empty-cart" exact>Empty-Cart</NavLink>
                           </li>
+                          <li>
+                            <NavLink to="/privacy-poplicy" exact>Privacy Policy</NavLink>
+                          </li> 
                         </ul>
                       </li>
                       <li>
@@ -83,12 +89,6 @@ function Header(props) {
                   </nav>
                 </div>
                 <ul className="header-action-link action-color--black action-hover-color--golden">
-                  <li>
-                    <a href="#offcanvas-wishlish" className="offcanvas-toggle">
-                      <i className="icon-heart" />
-                      <span className="item-count">3</span>
-                    </a>
-                  </li>
                   <li>
                     <a href="#offcanvas-add-cart" className="offcanvas-toggle">
                       <i className="icon-bag" />
