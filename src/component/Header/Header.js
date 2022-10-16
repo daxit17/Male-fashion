@@ -14,6 +14,11 @@ function Header(props) {
     dispatch(logOutAction());
   }
 
+  const cart = useSelector(state => state.cart)
+  const cartIcon = cart.cart.length;
+
+  const submitOrder = useSelector(state => state.submitOrder)
+
   return (
     <header className="header-section d-none d-xl-block">
       <div className="header-wrapper">
@@ -67,7 +72,7 @@ function Header(props) {
                           </li>
                           <li>
                             <NavLink to="/privacy-poplicy" exact>Privacy Policy</NavLink>
-                          </li> 
+                          </li>
                         </ul>
                       </li>
                       <li>
@@ -90,10 +95,16 @@ function Header(props) {
                 </div>
                 <ul className="header-action-link action-color--black action-hover-color--golden">
                   <li>
-                    <a href="#offcanvas-add-cart" className="offcanvas-toggle">
+                    <NavLink href="#offcanvas-add-cart" to="/cart" exact className="offcanvas-toggle">
                       <i className="icon-bag" />
-                      <span className="item-count">3</span>
-                    </a>
+                      {
+                        submitOrder.order ?
+                          <span className="item-count">0</span>
+                          :
+                          <span className="item-count">{cartIcon}</span>
+
+                      }
+                    </NavLink>
                   </li>
                   <li>
                     <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">

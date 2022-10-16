@@ -11,3 +11,7 @@ export const Increment = (id) => (dispatch) => {
 export const Decrement = (id) => (dispatch) => {
     dispatch({ type: ActionTypes.DECREMENT, payload: id });
 }
+
+export const DeleteCart = (id) => (dispatch) => {
+    dispatch({ type: ActionTypes.DELETE_CART, payload: id })
+}

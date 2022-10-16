@@ -55,7 +55,7 @@ function Single_Product_Details(props) {
                                             <div className="product-large-image product-large-image-horaizontal swiper-container">
                                                 <div className="swiper-wrapper">
                                                     <div className="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                                        <img src={profile_img} alt />
+                                                        <img src={profile_img} alt height={350} />
                                                     </div>
                                                 </div>
                                             </div>

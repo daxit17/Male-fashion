@@ -23,6 +23,7 @@ import Cart from "./container/Cart/Cart";
 import Privacy_Policy from "./container/Privacy_policy/Privacy_Policy";
 import CheckOut from "./container/checkout/CheckOut";
 import Empty_cart from "./container/Cart/Empty_cart";
+import Add_To_Cart from "./container/Cart/Add_To_Cart";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
               <PrivateRouting path={"/categories_admin"} component={Category_Admin} exact />
               <PrivateRouting path={"/categories"} component={Categories} exact />
               <PrivateRouting path={"/products_details"} component={Single_Product_Details} exact />
-              <PrivateRouting path={"/cart"} component={Cart} exact />
+              <PrivateRouting path={"/cart"} component={Add_To_Cart} exact />
               <PrivateRouting path={"/checkout"} component={CheckOut} exact />
               <PrivateRouting path={"/empty-cart"} component={Empty_cart} exact />
               <PublicRouting path={"/privacy-poplicy"} component={Privacy_Policy} exact />

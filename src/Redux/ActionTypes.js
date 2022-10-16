@@ -21,3 +21,6 @@ export const UPDATE_CATEGORY_DATA = "UPDATE_CATEGORY_DATA";
 export const ADD_CART = "ADD_CART";
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
+export const DELETE_CART = "DELETE_CART";
+
+export const SUBMIT_ORDER = "SUBMIT_ORDER";
